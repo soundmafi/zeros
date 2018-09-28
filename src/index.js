@@ -1,21 +1,14 @@
 module.exports = function getZerosCount(number) {
   var zeros = 0;
+  var zeros = 0;
 
-  for (var i = 1; i <= number; i++) {
-      if (i % 5 === 0 || i % 10 === 0) {
-          var currNum = i;
-          while (currNum % 10 === 0) {
-              currNum /= 10;
-              zeros++;
-          }
-
-          while (currNum % 5 === 0) {
-              currNum /= 5;
-              zeros++;
-          }
-      }
+  var amountOfEvery5NNumber = number;
+  var power = 1;
+  while (amountOfEvery5NNumber > 0) { //every 5, 25, 625 ... number produces 0 at multiplying
+      amountOfEvery5NNumber = Math.trunc(number / Math.pow(5, power++));
+      zeros += amountOfEvery5NNumber;
   }
 
-  return zeros; 
+  return zeros;
   
 }
